@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var whatsApp_controller_1 = require("../app/controllers/whatsApp.controller");
+var whatsAppRoutes = (0, express_1.Router)();
+var baseRoute = '/whatsapp';
+whatsAppRoutes.get("".concat(baseRoute, "/health"), function (req, res) { return new whatsApp_controller_1.WhatsAppController(req, res).health(); });
+whatsAppRoutes.post("".concat(baseRoute, "/webhook"), function (req, res) { return new whatsApp_controller_1.WhatsAppController(req, res).sendMensaje(); });
+whatsAppRoutes.get("".concat(baseRoute, "/webhook"), function (req, res) { return new whatsApp_controller_1.WhatsAppController(req, res).verifyToken(); });
+exports.default = whatsAppRoutes;
